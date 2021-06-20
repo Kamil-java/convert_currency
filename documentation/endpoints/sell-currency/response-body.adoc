@@ -1,0 +1,4 @@
+[source,options="nowrap"]
+----
+{"currencyCode":"EUR","saleValue":2.46}
+----

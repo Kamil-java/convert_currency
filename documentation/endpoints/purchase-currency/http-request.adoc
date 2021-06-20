@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+POST /api/purchase/USD/EUR HTTP/1.1
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+
+value=3
+----

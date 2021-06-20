@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http --form POST 'http://localhost:8080/api/purchase/USD/EUR' \
+    'Content-Type:application/json;charset=UTF-8' \
+    'value=3'
+----
