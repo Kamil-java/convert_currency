@@ -6,6 +6,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.bak.Currency_converter.model.Currency;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -35,7 +36,8 @@ public class CurrencyController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
-        return currencyService.sellCurrency(fromCode, toCode, decimal)
+        Optional<Currency> currency = currencyService.sellCurrency(fromCode, toCode, decimal);
+        return currency
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 

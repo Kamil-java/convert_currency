@@ -39,6 +39,7 @@ public class CurrencyService {
             currency.setCurrencyCode(PLN);
             BigDecimal calculateValue = value.divide(singleBodyFromApi.get().getSaleValue(), HALF_UP);
             currency.setSaleValue(calculateValue);
+            currency.setCurrencyCode(CurrencyCode.valueOf(toCurrency));
 
             return Optional.of(currency);
         }
@@ -53,6 +54,7 @@ public class CurrencyService {
 
         currency.setPurchaseValue(null);
         currency.setSaleValue(valueCalculate.calculateValue(toCurrency, value, currency));
+        currency.setCurrencyCode(CurrencyCode.valueOf(toCurrency));
 
         return Optional.of(currency);
     }
@@ -70,6 +72,7 @@ public class CurrencyService {
             currency.setCurrencyCode(PLN);
             BigDecimal calculateValue = value.divide(singleBodyFromApi.get().getPurchaseValue(), HALF_UP);
             currency.setPurchaseValue(calculateValue);
+            currency.setCurrencyCode(CurrencyCode.valueOf(toCurrency));
 
             return Optional.of(currency);
         }
@@ -84,6 +87,7 @@ public class CurrencyService {
 
         currency.setSaleValue(null);
         currency.setPurchaseValue(valueCalculate.calculateValue(toCurrency, value, currency));
+        currency.setCurrencyCode(CurrencyCode.valueOf(toCurrency));
 
         return Optional.of(currency);
     }

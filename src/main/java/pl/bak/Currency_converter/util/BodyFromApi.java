@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Component
 public class BodyFromApi {
-    private final NbpPathApi pathApi = new NbpPathApi();
     private final RestTemplate restTemplate;
 
     public BodyFromApi(RestTemplate restTemplate) {
@@ -18,7 +17,8 @@ public class BodyFromApi {
     }
 
     public Optional<Currency> getSingleBodyFromApi(String fromCurrency) {
-        DataSingleObject currencyData = restTemplate.getForObject(pathApi.getSingleData + fromCurrency, DataSingleObject.class);
+        NbpPathApi pathApi = new NbpPathApi();
+        DataSingleObject currencyData = restTemplate.getForObject(pathApi.getSingleData() + fromCurrency, DataSingleObject.class);
         Optional<DataSingleObject> singleObjectOptional = Optional.ofNullable(currencyData);
 
         if (singleObjectOptional.isEmpty()) {
